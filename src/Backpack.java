@@ -5,13 +5,24 @@ public class Backpack {
 	private Textbook textbook;
 
 	Backpack(){
-		System.out.println("Nice Backpack");
+		System.out.println("Nice Backpack!");
 	}
 	
 	public static void main (String[] args){
 		/* Your mission is to get to school, but first you need to get all of your supplies into your backpack. */
+		//Psych! That's the wrong numba! OHHHHHH!
 Backpack b=new Backpack();
-b.Pencil();
+Pencil p=new Pencil();
+Ruler r=new Ruler();
+Textbook t= new Textbook();
+b.putInBackpack(p);
+b.putInBackpack(t);
+b.putInBackpack(r);
+b.goToSchool();
+b.getClass();
+p.write("I h8 skool");
+r.measure();
+t.read();
 
 	}
 	
@@ -76,8 +87,12 @@ class Textbook extends Supply{
 	}
 	
 	public void read(){
-		System.out.println("The history of Iceland is long and interesting");
+		System.out.println("The history of Iceland is long and interesting. 'jk XD'");
 	}
 }
 
 
+
+
+
+//You better wear a latex cause you don't want that late text that, "I think I'm late" text
