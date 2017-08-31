@@ -90,9 +90,3 @@ class Textbook extends Supply{
 		System.out.println("The history of Iceland is long and interesting. 'jk XD'");
 	}
 }
-
-
-
-
-
-//You better wear a latex cause you don't want that late text that, "I think I'm late" text

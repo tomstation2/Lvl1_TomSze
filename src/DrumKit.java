@@ -68,6 +68,7 @@ System.out.println("mouse clicked");
 playSound("drumsound.wav");
 		// 18. Add more images to make a drumkit. Remember to add a mouse listener to
 		// each one.
+		//You better wear a latex cause you don't want that late text that, "I think I'm late" text
 	}
 
 	private JLabel createLabelImage(String fileName) throws MalformedURLException {
