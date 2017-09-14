@@ -30,8 +30,8 @@ import java.io.File;
 public class Jeopardy implements ActionListener {
 	private JButton firstButton;
 	private JButton secondButton;
-	private JButton thirdButton, fourthButton;
-
+	private JButton thirdButton, fourthButton, fifthButton;
+	private Clip clip;
 	private JPanel quizPanel;
 	int score = 0;
 	JLabel scoreBox = new JLabel("0");
@@ -57,7 +57,7 @@ public class Jeopardy implements ActionListener {
 		// 5. Add the quizPanel to the frame
 		frame.add(quizPanel);
 		// 6. Use the createButton method to set the value of firstButton
-		JButton firstButton = createButton("200");
+		firstButton = createButton("200");
 		// 7. Add the firstButton to the quizPanel
 		quizPanel.add(firstButton);
 		// 8. Write the code inside the createButton() method below. Check that your
@@ -65,19 +65,29 @@ public class Jeopardy implements ActionListener {
 
 		// 9. Use the secondButton variable to hold a button using the createButton
 		// method
-		JButton secondButton = createButton("400");
+		secondButton = createButton("400");
+		thirdButton = createButton("600");
+		fourthButton = createButton("800");
+		fifthButton = createButton("1000");
 		// 10. Add the secondButton to the quizPanel
 		quizPanel.add(secondButton);
+		quizPanel.add(thirdButton);
+		quizPanel.add(fourthButton);
+		quizPanel.add(fifthButton);
 		// 11. Add action listeners to the buttons (2 lines of code)
-firstButton.addActionListener(this);
-secondButton.addActionListener(this);
+
+		firstButton.addActionListener(this);
+		secondButton.addActionListener(this);
+		thirdButton.addActionListener(this);
+		fourthButton.addActionListener(this);
+		fifthButton.addActionListener(this);
+
 		// 12. Fill in the actionPerformed() method below
 
 		frame.pack();
 		quizPanel.setLayout(new GridLayout(buttonCount + 1, 3));
 		frame.add(makeScorePanel(), BorderLayout.NORTH);
-		frame.setSize(Toolkit.getDefaultToolkit().getScreenSize().height,
-				Toolkit.getDefaultToolkit().getScreenSize().width);
+		frame.setSize(Toolkit.getDefaultToolkit().getScreenSize().height, Toolkit.getDefaultToolkit().getScreenSize().width);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
@@ -86,8 +96,7 @@ secondButton.addActionListener(this);
 	 * 
 	 * 14. Add buttons so that you have $200, $400, $600, $800 and $1000 questions
 	 *
-	 * [optional] Use the showImage or playSound methods when the user answers a
-	 * question
+	 * [optional] Use the showImage or playSound methods when the user answers a question
 	 */
 
 	private JButton createButton(String dollarAmount) {
@@ -104,47 +113,61 @@ secondButton.addActionListener(this);
 
 	public void actionPerformed(ActionEvent arg0) {
 		// Remove this temporary message:
-		
 
 		// Use the method that plays the jeopardy theme music.
-playJeopardyTheme();
+
 		JButton buttonPressed = (JButton) arg0.getSource();
 		// If the buttonPressed was the firstButton
-if(firstButton==(buttonPressed)) {
-	askQuestion("Which team has the most Superbowl wins?","Steelers",Integer.parseInt(buttonPressed.getText()));
-}
+		if (firstButton == (buttonPressed)) {
+			askQuestion("Which team has the most Superbowl wins?", "Steelers", Integer.parseInt(buttonPressed.getText()));
+			firstButton.setText(null);
+		}
 		// Call the askQuestion() method
 
 		// Fill in the askQuestion() method. When you play the game, the score should
 		// change.
 
 		// Or if the buttonPressed was the secondButton
-if(secondButton==(buttonPressed)) {
-	askQuestion("Which person has most rushing yards?","Emmitt Smith",Integer.parseInt(buttonPressed.getText()));
-}
+		if (secondButton == (buttonPressed)) {
+			askQuestion("Which person has most rushing yards?", "Emmitt Smith", Integer.parseInt(buttonPressed.getText()));
+			secondButton.setText(null);
+		}
 		// Call the askQuestion() method with a harder question
-
+		if (thirdButton == (buttonPressed)) {
+			askQuestion("Who is the only kick returner to get a Super Bowl MVP?", "Desmond Howard", Integer.parseInt(buttonPressed.getText()));
+			thirdButton.setText(null);
+		}
+		if (fourthButton == (buttonPressed)) {
+			askQuestion("How many defensive Super MVPs have there been?", "10", Integer.parseInt(buttonPressed.getText()));
+			fourthButton.setText(null);
+		}
+		if (fifthButton == (buttonPressed)) {
+			askQuestion("Who is the oldest active player?", "Adam Vinatieri", Integer.parseInt(buttonPressed.getText()));
+			fifthButton.setText(null);
+		}
 		// Clear the button text (set the button text to nothing)
-secondButton.setText(null);
+
 	}
 
 	private void askQuestion(String question, String correctAnswer, int prizeMoney) {
 		// Remove this temporary message
-	
+		playJeopardyTheme();
 		// Use a pop up to ask the user the question
-String x=JOptionPane.showInputDialog(question);
-		// If the answer is correct (10)
-if(x.equals(correctAnswer)){
-	score+=prizeMoney;
-	updateScore();
-	JOptionPane.showMessageDialog(null, "Correct");
-}
+		String x = JOptionPane.showInputDialog(question);
+		clip.stop();
+		// If the answer is correct 
+		if (x.equals(correctAnswer)) {
+			score += prizeMoney;
+			updateScore();
+			JOptionPane.showMessageDialog(null, "Correct");
+		}
 		// Increase the score by the prizeMoney
-else {
-	score-=prizeMoney;
-	JOptionPane.showMessageDialog(null, "The correct answer is "+correctAnswer);
-	updateScore();
-}
+		else {
+			score -= prizeMoney;
+			JOptionPane.showMessageDialog(null, "The correct answer is " + correctAnswer);
+			updateScore();
+		}
+		
 		// Call the updateScore() method
 
 		// Pop up a message to tell the user they were correct
@@ -161,9 +184,8 @@ else {
 
 	public void playJeopardyTheme() {
 		try {
-			AudioInputStream audioInputStream = AudioSystem
-					.getAudioInputStream(new File("/Users/League/Google Drive/league-sounds/jeopardy.wav"));
-			Clip clip = AudioSystem.getClip();
+			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("/Users/League/Google Drive/league-sounds/jeopardy.wav"));
+			clip = AudioSystem.getClip();
 			clip.open(audioInputStream);
 			clip.start();
 		} catch (Exception ex) {
