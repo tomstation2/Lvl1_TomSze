@@ -13,6 +13,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import sun.applet.Main;
+
 public class FortuneTeller extends JPanel implements Runnable, MouseListener {
 
     JFrame frame = new JFrame();
@@ -30,7 +32,7 @@ frame.addMouseListener(this);
 
     static void begin() {
    	 // 3. Welcome the user. Give them a hint for the secret location.
-JOptionPane.showMessageDialog(null, "Welcome Player 1. The square root of 16 halfed by 2 divided by 2 multiplied by two. Also the best football player ever");
+JOptionPane.showMessageDialog(null,"Welcome Player 1. The square root of 16 halfed by 2 divided by 2 multiplied by two times 10. Also the best football player ever plus a 0");
     }
 
     @Override
@@ -38,26 +40,59 @@ JOptionPane.showMessageDialog(null, "Welcome Player 1. The square root of 16 hal
    	 int mouseX = e.getX();
    	 int mouseY = e.getY();
    	 // 5. Print the mouseX variable
-System.out.println(mouseX,mouseY);
+System.out.println(""+mouseX+","+mouseY);
    	 // 6. Add the mouseY variable to the previous line so that it prints out too (no new line)
    	 // 7. Adjust your secret location co-ordinates here:
-   	 int secretLocationX = 02;
-   	 int secretLocationY = 12;
+   	 int secretLocationX = 20;
+   	 int secretLocationY = 120;
    	 /** If the mouse co-ordinates and secret location are close, we'll let them ask a question. */
    	 if (areClose(mouseX, secretLocationX) && areClose(mouseY, secretLocationY)) {
    		 // 8. Get the user to enter a question for the fortune teller
-
+JOptionPane.showInputDialog("Enter a question for the fortune teller.");
    		 // 9. Find a spooky sound and put it in your default package (freesound.org)
    		 // AudioClip sound = JApplet.newAudioClip(getClass().getResource("spooky.aif"));
    		 // 10. Play the sound
-
+AudioClip sound = JApplet.newAudioClip(getClass().getResource("spooky.mp3"));
+sound.play();
    		 // 11. Use the pause() method below to wait until your music has finished
-
+pause(4);
    		 // 12. Insert your completed Magic 8 ball recipe (http://bit.ly/Zdrf6d) here
 
+// 2. Make a variable that will hold a random number and put a random number into this variable using "new Random().nextInt(4)"
+int number=new Random().nextInt(4);
+// 3. Print out this variable
+System.out.println(number);
+// 4. Get the user to enter a question for the 8 ball
+// 5. If the random number is 0
+if(number==0){
+JOptionPane.showMessageDialog(null, "Yes.");
+}
+// -- tell the user "Yes"
+
+// 6. If the random number is 1
+if(number==1){
+JOptionPane.showMessageDialog(null, "No.");
+}
+// -- tell the user "No"
+
+// 7. If the random number is 2
+if(number==2){
+JOptionPane.showMessageDialog(null, "Maybe you should ask Google?");
+}
+// -- tell the user "Maybe you should ask Google?"
+
+// 8. If the random number is 3
+if(number==3){
+JOptionPane.showMessageDialog(null, "PSYCH! THAT'S THE WRONG NUMBER!");
+}
+// -- write your own answer
    	 }
 
     }
+    
+
+  
+
 
     private boolean areClose(int mouseX, int secretLocationX) {
    	 return mouseX < secretLocationX + 15 && mouseX > secretLocationX - 15;
