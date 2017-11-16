@@ -1,6 +1,7 @@
 /Backpack.class
 /BookOfIllusions.class
 /CowTimer.class
+/Cup.class
 /Drum.jpg
 /DrumKit.class
 /DuelingButtons.class
@@ -11,6 +12,8 @@
 /HarryPotter.class
 /Human.class
 /Jeopardy.class
+/Kettle$Water.class
+/Kettle.class
 /LearningGridworld.class
 /Minion.class
 /MinionTest.class
@@ -21,7 +24,10 @@
 /Ruler.class
 /SeaCreature.class
 /SeaCreatureRunner.class
+/SimpleCalculator.class
 /Supply.class
+/TeaBag.class
+/TeaMaker.class
 /Textbook.class
 /Tortoise.jar
 /cow.wav
@@ -33,10 +39,4 @@
 /illusion1.png
 /images.jpg
 /spooky.mp3
-/MakeTea.class
-/Cup.class
-/Kettle$Water.class
-/Kettle.class
-/TeaBag.class
-/TeaMaker.class
-/SimpleCalculator.class
+/SimpleCalculatorRunner.class
