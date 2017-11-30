@@ -5,5 +5,7 @@
 	<classpathentry kind="lib" path="src/Tortoise.jar"/>
 	<classpathentry kind="lib" path="src/gridworld.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="src/javazoom.jar"/>
+	<classpathentry kind="lib" path="src/Mariah_Carey_-_All_I_Want_For_Christmas_Is_You[Mp3Converter.net].mp3"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

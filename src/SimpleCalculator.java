@@ -77,7 +77,7 @@ JLabel ans=new JLabel();
 			ans.setText(Integer.toString(number1*number2));
 		}
 		if(e.getSource()==divButton) {
-			ans.setText(Float.toString(number1/number2));
+			ans.setText(String.valueOf((number1/number2)));
 		}
 	}
 	@Override
