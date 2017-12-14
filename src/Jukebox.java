@@ -2,7 +2,6 @@
 // Copyright The League of Amazing Programmers, 2015
 import java.awt.Dimension;
 import java.awt.Image;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.FileInputStream;
@@ -20,7 +19,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.advanced.AdvancedPlayer;
 
 /* 1. Download the JavaZoom jar from here: http://bit.ly/javazoom
@@ -33,7 +31,11 @@ public class Jukebox implements Runnable, MouseListener {
 	private JButton button3 = new JButton();
 	private JButton button4 = new JButton();
 	private JPanel panel = new JPanel();
-	Song AIWFCIY= new Song("Christmas.mp3");
+	Song AIWFCIY = new Song("Christmas.mp3");
+	Song Wham = new Song("Wham.mp3");
+	Song LSN = new Song("LSN.mp3");
+	Song WCT = new Song("WCT.mp3");
+	Song currentSong;
 
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Jukebox());
@@ -90,10 +92,10 @@ public class Jukebox implements Runnable, MouseListener {
 		button2.addMouseListener(this);
 		button3.addMouseListener(this);
 		button4.addMouseListener(this);
-		
+
 		// 3. Find an mp3 on your computer or on the Internet.
 		// 4. Create a Song
-		
+
 		// 5. Play the Song
 		/*
 		 * 6. Create a user interface for your Jukebox so that the user can to choose
@@ -112,34 +114,46 @@ public class Jukebox implements Runnable, MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		if (currentSong != null) {
+			currentSong.stop();
+		}
 		// TODO Auto-generated method stub
-		if(e.getSource()==button1) {
-			AIWFCIY.play();
+		if (e.getSource() == button1) {
+			currentSong = AIWFCIY;
+		} else if (e.getSource() == button2) {
+			currentSong = Wham;
+		} else if (e.getSource() == button3) {
+			currentSong = LSN;
+		} else if (e.getSource() == button4) {
+			currentSong = WCT;
+		}
+		if (currentSong != null) {
+			currentSong.play();
 		}
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
