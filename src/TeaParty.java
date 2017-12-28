@@ -12,8 +12,11 @@ public class TeaParty {
 
 	public static void main(String[] args) {
 		TeaParty party = new TeaParty();
-		party.welcome("George Orwell", false, false);
-		party.welcome("Jane Austen", true, false);
-		party.welcome("Issac Newton", false, true);
+		// party.welcome("George Orwell", false, false);
+		// party.welcome("Jane Austen", true, false);
+		// party.welcome("Issac Newton", false, true);
+		System.out.println(party.welcome("Issac Newton", false, true));
+		System.out.println(party.welcome("George Orwell", false, false));
+		System.out.println(party.welcome("Jane Austen", true, false));
 	}
 }
